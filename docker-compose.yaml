@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  redis_container:
+    image: redis
+    restart: always
+
+  app:
+    restart: always
+    build:
+      context: .
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    command: >
+      bash -c "     
+        sleep 10 && \
+        python manage.py makemigrations && \
+        python manage.py migrate && \
+        python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - pgdatabase
+
+  pgdatabase:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=test
+      - POSTGRES_DB=test_db
+    ports:
+      - "7000:5432"
+
+
+
+
+
