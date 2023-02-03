@@ -1,3 +1,4 @@
+Стек: Django, DRF, Redis, Postgres, Docker
 Инструкция для запуска:  
 ```
 docker-compose build
