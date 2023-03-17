@@ -1,9 +1,6 @@
 from random import choice
 from string import ascii_letters, digits
 
-from random import choice
-from string import ascii_letters, digits
-
 SIZE = 6
 AVAIABLE_CHARS = ascii_letters + digits
 
